@@ -1,0 +1,100 @@
+﻿Pais,SE,Año,Measure Names,Measure Values
+ Venezuela,36,2025,Población X 1000,28300
+ Venezuela,36,2025,Letalidad (e),
+ Venezuela,36,2025,Incidencia (d),0.017667845
+ Venezuela,36,2025,Manifestaciones Neurológicas,
+ Venezuela,36,2025,Muertes ,
+ Venezuela,36,2025,Hospitalizados ,
+ Venezuela,36,2025,Importados ,
+ Venezuela,36,2025,Confirmados laboratorio (b),5
+ Venezuela,36,2025,Sospechosos (a),5
+Brasil,52,2025,Población X 1000,213993
+Brasil,52,2025,Letalidad (e),0.041708375
+Brasil,52,2025,Incidencia (d),5.602052404
+Brasil,52,2025,Manifestaciones Neurológicas,0
+Brasil,52,2025,Muertes ,5
+Brasil,52,2025,Hospitalizados ,0
+Brasil,52,2025,Importados ,0
+Brasil,52,2025,Confirmados laboratorio (b),11988
+Brasil,52,2025,Sospechosos (a),11988
+Canada,4,2025,Población X 1000,0
+Canada,4,2025,Letalidad (e),
+Canada,4,2025,Incidencia (d),
+Canada,4,2025,Manifestaciones Neurológicas,
+Canada,4,2025,Muertes ,
+Canada,4,2025,Hospitalizados ,
+Canada,4,2025,Importados ,1
+Canada,4,2025,Confirmados laboratorio (b),0
+Canada,4,2025,Sospechosos (a),0
+Chile,52,2025,Población X 1000,19859
+Chile,52,2025,Letalidad (e),
+Chile,52,2025,Incidencia (d),0
+Chile,52,2025,Manifestaciones Neurológicas,
+Chile,52,2025,Muertes ,
+Chile,52,2025,Hospitalizados ,
+Chile,52,2025,Importados ,2
+Chile,52,2025,Confirmados laboratorio (b),0
+Chile,52,2025,Sospechosos (a),0
+Colombia,19,2025,Población X 1000,45606
+Colombia,19,2025,Letalidad (e),
+Colombia,19,2025,Incidencia (d),0.046046573
+Colombia,19,2025,Manifestaciones Neurológicas,
+Colombia,19,2025,Muertes ,
+Colombia,19,2025,Hospitalizados ,
+Colombia,19,2025,Importados ,
+Colombia,19,2025,Confirmados laboratorio (b),21
+Colombia,19,2025,Sospechosos (a),21
+Cuba,44,2025,Población X 1000,11317
+Cuba,44,2025,Letalidad (e),
+Cuba,44,2025,Incidencia (d),36.423080322
+Cuba,44,2025,Manifestaciones Neurológicas,4
+Cuba,44,2025,Muertes ,
+Cuba,44,2025,Hospitalizados ,
+Cuba,44,2025,Importados ,
+Cuba,44,2025,Confirmados laboratorio (b),39
+Cuba,44,2025,Sospechosos (a),4122
+Estados Unidos,52,2025,Población X 1000,332915
+Estados Unidos,52,2025,Letalidad (e),
+Estados Unidos,52,2025,Incidencia (d),0
+Estados Unidos,52,2025,Manifestaciones Neurológicas,1
+Estados Unidos,52,2025,Muertes ,
+Estados Unidos,52,2025,Hospitalizados ,
+Estados Unidos,52,2025,Importados ,2
+Estados Unidos,52,2025,Confirmados laboratorio (b),0
+Estados Unidos,52,2025,Sospechosos (a),0
+Guyana,2,2025,Población X 1000,790
+Guyana,2,2025,Letalidad (e),
+Guyana,2,2025,Incidencia (d),0.126582278
+Guyana,2,2025,Manifestaciones Neurológicas,
+Guyana,2,2025,Muertes ,
+Guyana,2,2025,Hospitalizados ,
+Guyana,2,2025,Importados ,
+Guyana,2,2025,Confirmados laboratorio (b),1
+Guyana,2,2025,Sospechosos (a),1
+Panamá,53,2025,Población X 1000,4457
+Panamá,53,2025,Letalidad (e),0.140845070
+Panamá,53,2025,Incidencia (d),15.929997756
+Panamá,53,2025,Manifestaciones Neurológicas,3
+Panamá,53,2025,Muertes ,1
+Panamá,53,2025,Hospitalizados ,
+Panamá,53,2025,Importados ,
+Panamá,53,2025,Confirmados laboratorio (b),710
+Panamá,53,2025,Sospechosos (a),710
+Perú,38,2025,Población X 1000,33359
+Perú,38,2025,Letalidad (e),
+Perú,38,2025,Incidencia (d),0.989238287
+Perú,38,2025,Manifestaciones Neurológicas,
+Perú,38,2025,Muertes ,
+Perú,38,2025,Hospitalizados ,
+Perú,38,2025,Importados ,
+Perú,38,2025,Confirmados laboratorio (b),330
+Perú,38,2025,Sospechosos (a),330
+Uruguay,52,2025,Población X 1000,3384
+Uruguay,52,2025,Letalidad (e),
+Uruguay,52,2025,Incidencia (d),0
+Uruguay,52,2025,Manifestaciones Neurológicas,0
+Uruguay,52,2025,Muertes ,
+Uruguay,52,2025,Hospitalizados ,
+Uruguay,52,2025,Importados ,3
+Uruguay,52,2025,Confirmados laboratorio (b),0
+Uruguay,52,2025,Sospechosos (a),0

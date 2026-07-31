@@ -1,0 +1,59 @@
+﻿ID,País o Subregion,Serotipo,Año,In / Out of Subregions,Country or Subregion,EW,Epidemiological Week (a),Año (Filtro),Iso3166,Type,(C/TC) x100 (e),(DG/D) x100 (e),0,Confirmed,Dengue Grave (d),Lab Confirm Incidence rate,Letalidad (f),Muertes,Number of Records,Población X 1000,Tasa de Incidencia (c),Total de Casos de Dengue (b)
+6,Anguila,  ,2025,Out,Anguilla,53,49,1/1/2025,660,Preliminar,100,0,0,3,0,21.43,0.000,0,1,14,21.43,3
+6,Antigua y Barbuda,  ,2025,Out,Antigua and Barbuda,53,44,1/1/2025,28,Preliminar,66.666666667,0,0,10,0,10.64,0.000,0,1,94,15.96,15
+4,Argentina,"DEN 1,2,3",2025,Out,Argentina,53,53,1/1/2025,32,Preliminar,45.959882140,0.266319130,0,8111,47,17.69,0.074,13,1,45851,38.49,17648
+6,Aruba,  ,2025,Out,Aruba,53,44,1/1/2025,533,Preliminar,21.428571429,0,0,3,0,2.78,0.000,0,1,108,12.96,14
+6,Bahamas,  ,2025,Out,Bahamas,53,-,1/1/2025,44,Preliminar,,,0,,,,,,1,403,,
+6,Barbados,  ,2025,Out,Barbados,53,53,1/1/2025,52,Preliminar,0.561797753,0,0,1,0,0.35,0.000,0,1,282,63.12,178
+2,Belice,  ,2025,Out,Belize,53,53,1/1/2025,84,Preliminar,54.951734001,0,0,1537,0,364.22,0.000,0,1,422,662.80,2797
+6,Bermuda,  ,2025,Out,Bermuda,53,48,1/1/2025,60,Preliminar,0,0,0,0,0,0.00,0.000,0,1,64,1.56,1
+3,Bolivia,"DEN 1,2",2025,Out,Bolivia,53,53,1/1/2025,68,Preliminar,3.568423267,0.533817187,0,1357,203,10.79,0.008,3,1,12581,302.27,38028
+6,"Bonaire, San Eustaquio y Saba",  ,2025,Out,"Bonaire, Saint Eustatius and Saba",53,-,1/1/2025,535,Preliminar,,,0,,,,,,1,31,,
+4,Brasil,"DEN 1,2,3,4",2025,Out,Brazil,53,53,1/1/2025,76,Preliminar,38.332502686,0.067677579,0,1469805,2595,690.66,0.048,1826,1,212812,"1,801.76",3834357
+1,Canadá,  ,2025,Out,Canada,53,52,1/1/2025,124,Preliminar,,,0,0,0,0.00,,0,1,40126,0.00,0
+4,Chile,  ,2025,Out,Chile,53,53,1/1/2025,152,Preliminar,,,0,0,0,0.00,,0,1,19859,0.00,0
+3,Colombia,"DEN 1,2,3,4",2025,Out,Colombia,53,53,1/1/2025,170,Preliminar,69.438694363,0.991855753,0,86881,1241,162.62,0.099,124,1,53425,234.20,125119
+2,Costa Rica,"DEN 1,2,3,4",2025,Out,Costa Rica,53,52,1/1/2025,188,Preliminar,55.939524838,0,0,3367,0,65.35,0.000,0,1,5152,116.83,6019
+5,Cuba,"DEN 2,3,4",2025,Out,Cuba,53,53,1/1/2025,192,Preliminar,1.436856510,2.508797081,0,441,770,4.03,0.062,19,1,10937,280.63,30692
+6,Curazao,  ,2025,Out,Curaçao,53,-,1/1/2025,531,Preliminar,,,0,,,,,,1,185,,
+3,Ecuador,"DEN 1,2,3",2025,Out,Ecuador,53,53,1/1/2025,218,Preliminar,100,0.969873150,0,37840,367,206.90,0.172,65,1,18289,206.90,37840
+2,El Salvador,"DEN 1,2,3,4",2025,Out,El Salvador,53,52,1/1/2025,222,Preliminar,3.480198869,0.085719184,0,203,5,3.19,0.051,3,1,6365,91.64,5833
+1,Estados Unidos de América,  ,2025,Out,United States of America,53,53,1/1/2025,840,Preliminar,100,2.168256722,0,1153,25,0.33,0.000,0,1,347275,0.33,1153
+6,Granada,  ,2025,Out,Grenada,53,53,1/1/2025,308,Preliminar,0,2.304147465,0,0,5,0.00,0.000,0,1,117,185.47,217
+6,Guadalupe,DEN 3,2025,Out,Guadeloupe,53,52,1/1/2025,312,Preliminar,0.843881857,0,0,44,0,11.80,0.000,0,1,373,"1,397.86",5214
+2,Guatemala,"DEN 1,2,3",2025,Out,Guatemala,53,53,1/1/2025,320,Preliminar,2.075479514,0.012428021,0,1002,6,5.36,0.012,6,1,18687,258.35,48278
+6,Guayana Francesa,"DEN 2,3",2025,Out,French Guiana,53,52,1/1/2025,254,Preliminar,100,,0,318,,101.60,,,1,313,101.60,318
+6,Guyana,  ,2025,Out,Guyana,53,52,1/1/2025,328,Preliminar,21.745460774,3.290224963,0,15234,2305,"1,824.43",0.010,7,1,835,"8,389.94",70056
+6,Haití,  ,2025,Out,Haiti,53,-,1/1/2025,332,Preliminar,,,0,,,,,,1,11906,,
+2,Honduras,"DEN 1,3",2025,Out,Honduras,53,53,1/1/2025,340,Preliminar,2.752187932,1.324274528,0,478,230,4.34,0.046,8,1,11005,157.82,17368
+6,Isla de San Martín (Francia),  ,2025,Out,Saint Martin,53,52,1/1/2025,663,Preliminar,0.934579439,0,0,2,0,8.33,0.000,0,1,24,891.67,214
+6,Isla de San Martín (Holanda),  ,2025,Out,Sint Maarten,53,28,1/1/2025,534,Preliminar,100,0,0,8,0,18.60,0.000,0,1,43,18.60,8
+6,Islas Caimán,  ,2025,Out,Cayman Islands,53,52,1/1/2025,136,Preliminar,,,0,0,0,0.00,,0,1,75,0.00,0
+6,Islas Turcas y Caicos,  ,2025,Out,Turks and Caicos Islands,53,48,1/1/2025,796,Preliminar,0,0,0,0,0,0.00,0.000,0,1,46,2.17,1
+6,Islas Vírgenes (EUA),  ,2025,Out,Virgin Islands (US),53,52,1/1/2025,850,Preliminar,100,0,0,47,0,55.95,0.000,0,1,84,55.95,47
+6,Islas Vírgenes (RU),  ,2025,Out,Virgin Islands (UK),53,48,1/1/2025,92,Preliminar,100,0,0,46,0,117.95,0.000,0,1,39,117.95,46
+6,Jamaica,  ,2025,Out,Jamaica,53,53,1/1/2025,388,Preliminar,0.166112957,0,0,1,0,0.04,0.000,0,1,2837,21.22,602
+6,Martinica,  ,2025,Out,Martinique,53,52,1/1/2025,474,Preliminar,19.53125,0,0,250,0,73.53,0.000,0,1,340,376.47,1280
+2,México,"DEN 1,2,3,4",2025,Out,Mexico,53,53,1/1/2025,484,Preliminar,15.146883670,0.531493759,0,22001,772,16.67,0.058,84,1,131946,110.08,145251
+6,Montserrat,  ,2025,Out,Montserrat,53,48,1/1/2025,500,Preliminar,100,0,0,3,0,75.00,0.000,0,1,4,75.00,3
+2,Nicaragua,  ,2025,Out,Nicaragua,53,4,1/1/2025,558,Preliminar,16.064538758,0,0,916,0,13.07,0.000,0,1,7007,81.38,5702
+2,Panamá,"DEN 1,2,3,4",2025,Out,Panama,53,53,1/1/2025,591,Preliminar,82.093997678,0.615881670,0,16262,122,355.76,0.141,28,1,4571,433.36,19809
+4,Paraguay,"DEN 1,2,3",2025,Out,Paraguay,53,53,1/1/2025,600,Preliminar,4.340409401,0,0,1374,0,19.59,0.003,1,1,7013,451.39,31656
+3,Perú,"DEN 1,2,3",2025,Out,Peru,53,53,1/1/2025,604,Preliminar,87.373441126,0.492208819,0,34260,193,99.09,0.143,56,1,34576,113.41,39211
+5,Puerto Rico,"DEN 1,2,3,4",2025,Out,Puerto Rico,53,51,1/1/2025,630,Preliminar,76.589334137,3.886712865,0,2542,129,78.58,0.060,2,1,3235,102.60,3319
+5,República Dominicana,"DEN 1,3",2025,Out,Dominican Republic,53,52,1/1/2025,214,Preliminar,16.210840378,0.944803580,0,326,19,2.83,0.000,0,1,11520,17.46,2011
+6,Saint Kitts y Nevis,  ,2025,Out,Saint Kitts and Nevis,53,52,1/1/2025,659,Preliminar,45.454545455,0,0,5,0,10.87,0.000,0,1,46,23.91,11
+6,San Bartolomé,  ,2025,Out,Saint Barthelemy,53,52,1/1/2025,652,Preliminar,15,0,0,3,0,27.27,0.000,0,1,11,181.82,20
+6,San Vicente y las Granadinas,  ,2025,Out,Saint Vincent and the Grenadines,53,52,1/1/2025,670,Preliminar,100,0,0,8,0,8.08,0.000,0,1,99,8.08,8
+6,Santa Lucía,  ,2025,Out,Saint Lucia,53,53,1/1/2025,662,Preliminar,100,0,0,47,0,26.11,0.000,0,1,180,26.11,47
+6,Suriname,  ,2025,Out,Suriname,53,50,1/1/2025,740,Preliminar,20.411271896,0,0,268,0,41.94,0.152,2,1,639,205.48,1313
+6,Trinidad y Tobago,  ,2025,Out,Trinidad and Tobago,53,52,1/1/2025,780,Preliminar,4.109589041,0,0,3,0,0.20,0.000,0,1,1511,4.83,73
+4,Uruguay,  ,2025,Out,Uruguay,53,53,1/1/2025,858,Preliminar,100,0,0,7,0,0.21,0.000,0,1,3384,0.21,7
+3,Venezuela,  ,2025,Out,Venezuela,53,-,1/1/2025,862,Preliminar,,,0,,,,,,1,28516,,
+1,América del Norte,  ,2025,In,North America,53,-,1/1/2025,,Preliminar,100,2.168256722,0,1153,25,0.30,0.000,0,1,387401,0.30,1153
+5,Caribe Latino,  ,2025,In,Latin Caribbean,53,-,1/1/2025,,Preliminar,9.186052968,2.548442618,0,3309,918,12.88,0.058,21,1,25692,140.21,36022
+6,Caribe No Latino,  ,2025,In,Non-Latin Caribbean,53,-,1/1/2025,,Preliminar,20.459536448,2.898768964,0,16304,2310,78.75,0.011,9,1,20703,384.92,79689
+4,Cono Sur,  ,2025,In,Southern Cone,53,-,1/1/2025,,Preliminar,38.090202355,0.068028472,0,1479297,2642,512.01,0.047,1840,1,288919,"1,344.21",3883668
+2,Istmo Centroamericano y México,  ,2025,In,Central America Ithsmus and Mexico,53,-,1/1/2025,,Preliminar,18.229326408,0.452088570,0,45766,1135,24.72,0.051,129,1,185155,135.59,251057
+7,Las Américas,  ,2025,In,The Americas,53,-,1/1/2025,,Preliminar,37.984147512,0.201122627,0,1706167,9034,161.68,0.050,2247,1,1055257,425.66,4491787
+3,Subregión Andina,  ,2025,In,Andean Subregion,53,-,1/1/2025,,Preliminar,66.752429246,0.834311693,0,160338,2004,108.79,0.103,248,1,147387,162.97,240198

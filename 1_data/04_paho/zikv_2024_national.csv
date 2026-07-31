@@ -1,0 +1,58 @@
+﻿ID,País o Subregión,Fecha Último Reporte,Último Caso Reportado,In / Out of Subregions,Country or Subregion,EW,Year,Cat Incidencia Acumulada,End Date,Iso3166,Last_Case,Last_Report,Notes,Reference,Regions,StartDate,Type,Última Semana Epi Reportada (a),0,Casos Sospechosos (b),Confirmados,Congenital_Syn,Countries not reporting,EpiMonth,EpiYear,Importados,Incidencia Acumulada (c),Lab Confirm Incidence rate,LCREW,Legend Ranges,Letalidad (f),Measures Filter,Muertes,Población x 1000,Sospechosos,Total Countries,Total de Casos (b)
+1,América del Norte (Sin México),---,---,In,North America (minus Mexico),53,2024,0,,,,,,,Subregion,,Preliminar,-,0,0,0,,,,,18,0.00,0.00,,0,0.000,0,0,385168,0,1,0
+5,Caribe Latino,---,---,In,Latin Caribbean,53,2024,No Data,,,,,,,Subregion,,Preliminar,-,0,17,0,,,,,,,,,1 - 99,0.000,17,0,,17,1,17
+6,Caribe No Latino,---,---,In,Non-Latin Caribbean,53,2024,No Data,,,,,,,Subregion,,Preliminar,-,0,0,0,,,,,0,,,,0,0.000,0,0,,0,1,0
+4,Cono Sur,---,---,In,Southern Cone,53,2024,15-19,,,,,,,Subregion,,Preliminar,-,0,43810,2067,,,,,2,15.22,0.72,,1000 o mas,0.000,43810,0,287773,43810,1,"43,810"
+2,Centroamerica y México,---,---,In,Central America and Mexico,53,2024,1-4,,,,,,,Subregion,,Preliminar,-,0,254,32,,,,,,0.14,0.02,,100 - 499,0.000,254,0,183407,254,1,254
+7,Las Américas,---,---,In,The Americas,53,2024,1-4,,,,,,,Subregion,,Preliminar,-,0,44472,2099,,,,,20,4.24,0.20,,1000 o mas,0.000,44472,0,1048607,44472,1,"44,472"
+3,Subregión Andina,---,---,In,Andean Subregion,53,2024,1-4,,,,,,,Subregion,,Preliminar,-,0,391,0,,,,,,0.27,0.00,,100 - 499,0.000,391,0,146056,391,1,391
+6,Antigua y Barbuda,2016-12-31,2016-11-26,Out,Antigua and Barbuda,53,2024,No Data,,28,11/26/2016,12/31/2016,,,Caribean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,93,,1,
+6,"Bonaire, San Eustaquio y Saba",2016-12-31,2016-07-16,Out,"Bonaire, Saint Eustatius and Saba",53,2024,No Data,,535,7/16/2016,12/31/2016,,,Caribean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,30,,1,
+6,Guyana,2016-12-31,2016-07-23,Out,Guyana,53,2024,No Data,,328,7/23/2016,12/31/2016,,,Caribean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,831,,1,
+6,San Vicente y las Granadinas,2016-12-31,2016-10-22,Out,Saint Vincent and the Grenadines,53,2024,No Data,,670,10/22/2016,12/31/2016,,,Caribean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,100,,1,
+6,Trinidad y Tobago,2016-12-31,2016-11-26,Out,Trinidad and Tobago,53,2024,No Data,,780,11/26/2016,12/31/2016,,,Caribean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,1507,,1,
+6,Bahamas,2017-12-30,2017-07-15,Out,Bahamas,53,2024,No Data,,44,7/15/2017,12/30/2017,,,Caribean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,401,,1,
+6,Curazao,2017-12-30,2017-06-03,Out,Curaçao,53,2024,No Data,,531,6/3/2017,12/30/2017,,,Caribean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,185,,1,
+6,Isla de San Martín (Holanda),2017-12-30,2017-05-13,Out,Sint Maarten,53,2024,No Data,,534,5/13/2017,12/30/2017,,,Subregion,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,43,,1,
+6,Islas Turcas y Caicos,2017-12-30,2017-05-27,Out,Turks and Caicos Islands,53,2024,No Data,,796,5/27/2017,12/30/2017,,,Caribean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,46,,1,
+6,Montserrat,2017-12-30,2017-01-14,Out,Montserrat,53,2024,No Data,,500,1/14/2017,12/30/2017,,,Caribean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,4,,1,
+6,Guayana Francesa,2018-02-24,2018-02-24,Out,French Guiana,53,2024,No Data,,254,2/24/2018,2/24/2018,,,Caribean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,308,,1,
+6,Aruba,2018-12-29,2018-12-29,Out,Aruba,53,2024,No Data,,533,12/29/2018,12/29/2018,,,Caribean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,108,,1,
+6,Islas Vírgenes (RU),2018-12-29,2016-11-12,Out,Virgin Islands (UK),53,2024,No Data,,92,11/12/2016,12/29/2018,,,Caribean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,39,,1,
+6,Saint Kitts y Nevis,2018-12-29,2018-10-27,Out,Saint Kitts and Nevis,53,2024,No Data,,659,10/27/2018,12/29/2018,,,Caribean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,46,,1,
+5,República Dominicana,2019-01-26,2017-03-25,Out,Dominican Republic,53,2024,No Data,,214,3/25/2017,1/26/2019,,,Latin Caribbean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,11427,,1,
+6,Anguila,2019-03-09,2017-06-03,Out,Anguilla,53,2024,No Data,,660,6/3/2017,3/9/2019,,,Caribean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,14,,1,
+6,Bermuda,2019-03-16,---,Out,Bermuda,53,2024,No Data,,60,,3/16/2019,,,Caribean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,64,,1,
+5,Cuba,2019-12-28,2019-12-28,Out,Cuba,53,2024,No Data,,192,12/28/2019,12/28/2019,,,Latin Caribbean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,10979,,1,
+6,Islas Caimán,2020-02-29,2017-07-08,Out,Cayman Islands,53,2024,No Data,,136,7/8/2017,2/29/2020,,,Caribean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,74,,1,
+6,Haití,2021-05-22,2019-11-09,Out,Haiti,53,2024,No Data,,332,11/9/2019,5/22/2021,,,Caribean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,11772,,1,
+6,Guadalupe,2022-12-10,2016-12-24,Out,Guadeloupe,53,2024,No Data,,312,12/24/2016,12/10/2022,,,Caribean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,375,,1,
+6,Isla de San Martín (Francia),2022-12-10,2016-07-16,Out,Saint Martin,53,2024,No Data,,663,7/16/2016,12/10/2022,,,Caribean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,26,,1,
+6,Martinica,2022-12-10,2016-12-10,Out,Martinique,53,2024,No Data,,474,12/10/2016,12/10/2022,,,Caribean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,343,,1,
+6,Granada,2023-05-13,2017-03-18,Out,Grenada,53,2024,No Data,,308,3/18/2017,5/13/2023,,,Caribean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,117,,1,
+3,Venezuela,2023-05-27,2023-05-13,Out,Venezuela,53,2024,No Data,,862,5/13/2023,5/27/2023,,,Andean,,Preliminar,-,0,,,,1,,,,,,,Sin datos,,,,28405,,1,
+2,Honduras,2024-02-17,2024-02-17,Out,Honduras,53,2024,1-4,2/17/2024,340,2/17/2024,2/17/2024,,,Central America Ithsmus and Mexico,2/11/2024 12:00:00 AM,Preliminar,7,0,2,0,,,2,2024,,0.02,0.00,7,1 - 99,0.000,2,0,10825,2,1,2
+6,Santa Lucía,2024-04-27,2016-07-09,Out,Saint Lucia,53,2024,0,4/27/2024,662,7/9/2016,4/27/2024,,,Caribean,4/21/2024 12:00:00 AM,Preliminar,17,0,0,0,,,4,2024,,0.00,0.00,,0,0.000,0,0,179,0,1,0
+6,Suriname,2024-05-18,2020-01-18,Out,Suriname,53,2024,0,5/18/2024,740,1/18/2020,5/18/2024,,,Caribean,5/12/2024 12:00:00 AM,Preliminar,20,0,0,0,,,5,2024,,0.00,0.00,,0,0.000,0,0,634,0,1,0
+2,Belice,2024-06-29,2024-06-29,Out,Belize,53,2024,5-9,6/29/2024,84,6/29/2024,6/29/2024,,,Central America Ithsmus and Mexico,6/23/2024 12:00:00 AM,Preliminar,26,0,31,0,,,6,2024,,7.43,0.00,26,1 - 99,0.000,31,0,417,31,1,31
+4,Uruguay,2024-11-23,---,Out,Uruguay,53,2024,0,11/23/2024,858,,11/23/2024,,,Southern Cone,11/17/2024 12:00:00 AM,Preliminar,47,0,0,0,,,11,2024,2,0.00,0.00,,0,0.000,0,0,3386,0,1,0
+6,Jamaica,2024-12-21,2018-10-20,Out,Jamaica,53,2024,0,12/21/2024,388,10/20/2018,12/21/2024,,,Caribean,12/15/2024 12:00:00 AM,Preliminar,51,0,0,0,,,12,2024,,0.00,0.00,,0,0.000,0,0,2839,0,1,0
+4,Paraguay,2024-12-21,2024-12-14,Out,Paraguay,53,2024,1-4,12/21/2024,600,12/14/2024,12/21/2024,,,Southern Cone,12/15/2024 12:00:00 AM,Preliminar,51,0,12,0,,,12,2024,,0.17,0.00,50,1 - 99,,12,,6929,12,1,12
+4,Argentina,2024-12-28,2024-12-28,Out,Argentina,53,2024,1-4,12/28/2024,32,12/28/2024,12/28/2024,,,Southern Cone,12/22/2024 12:00:00 AM,Preliminar,52,0,564,0,,,12,2024,,1.23,0.00,52,500 - 999,0.000,564,0,45696,564,1,564
+6,Barbados,2024-12-28,2020-08-01,Out,Barbados,53,2024,0,12/28/2024,52,8/1/2020,12/28/2024,,,Caribean,12/22/2024 12:00:00 AM,Preliminar,52,0,0,0,,,12,2024,,0.00,0.00,,0,0.000,0,0,282,0,1,0
+3,Bolivia,2024-12-28,2024-12-28,Out,Bolivia,53,2024,1-4,12/28/2024,68,12/28/2024,12/28/2024,,,Andean,12/22/2024 12:00:00 AM,Preliminar,52,0,267,0,,,12,2024,,2.15,0.00,52,100 - 499,0.000,267,0,12413,267,1,267
+4,Brasil,2024-12-28,2024-12-28,Out,Brazil,53,2024,20 and more,12/28/2024,76,12/28/2024,12/28/2024,,,Southern Cone,12/22/2024 12:00:00 AM,Preliminar,52,0,43234,2067,,,12,2024,,20.39,0.98,52,1000 o mas,0.000,43234,0,211998,43234,1,"43,234"
+1,Canadá,2024-12-28,2017-12-30,Out,Canada,53,2024,0,12/28/2024,124,12/30/2017,12/28/2024,,,North America,12/22/2024 12:00:00 AM,Preliminar,52,0,0,0,,,12,2024,0,0.00,0.00,,0,0.000,0,0,39742,0,1,0
+4,Chile,2024-12-28,---,Out,Chile,53,2024,0,12/28/2024,152,,12/28/2024,,,Southern Cone,12/22/2024 12:00:00 AM,Preliminar,52,0,0,0,,,12,2024,0,0.00,0.00,,0,0.000,0,0,19764,0,1,0
+3,Colombia,2024-12-28,2024-12-07,Out,Colombia,53,2024,1-4,12/28/2024,170,12/7/2024,12/28/2024,,,Andean,12/22/2024 12:00:00 AM,Preliminar,52,0,117,0,,,12,2024,,0.22,0.00,49,100 - 499,0.000,117,0,52886,117,1,117
+2,Costa Rica,2024-12-28,2024-12-14,Out,Costa Rica,53,2024,1-4,12/28/2024,188,12/14/2024,12/28/2024,,,Central America Ithsmus and Mexico,12/22/2024 12:00:00 AM,Preliminar,52,0,32,0,,,12,2024,,0.62,0.00,50,1 - 99,0.000,32,0,5129,32,1,32
+3,Ecuador,2024-12-28,2018-12-15,Out,Ecuador,53,2024,0,12/28/2024,218,12/15/2018,12/28/2024,,,Andean,12/22/2024 12:00:00 AM,Preliminar,52,0,0,0,,,12,2024,,0.00,0.00,,0,0.000,0,0,18135,0,1,0
+2,El Salvador,2024-12-28,2024-12-28,Out,El Salvador,53,2024,1-4,12/28/2024,222,12/28/2024,12/28/2024,,,Central America Ithsmus and Mexico,12/22/2024 12:00:00 AM,Preliminar,52,0,92,0,,,12,2024,,1.45,0.00,52,1 - 99,0.000,92,0,6338,92,1,92
+1,Estados Unidos de América,2024-12-28,2022-11-19,Out,United States of America,53,2024,0,12/28/2024,840,11/19/2022,12/28/2024,,,North America,12/22/2024 12:00:00 AM,Preliminar,52,0,0,0,,,12,2024,18,0.00,0.00,,0,0.000,0,0,345426,0,1,0
+2,Guatemala,2024-12-28,2024-12-14,Out,Guatemala,53,2024,1-4,12/28/2024,320,12/14/2024,12/28/2024,,,Central America Ithsmus and Mexico,12/22/2024 12:00:00 AM,Preliminar,52,0,66,2,,,12,2024,,0.36,0.01,50,1 - 99,0.000,66,0,18406,66,1,66
+6,Islas Vírgenes (EUA),2024-12-28,2018-06-16,Out,Virgin Islands (US),53,2024,0,12/28/2024,850,6/16/2018,12/28/2024,,,Caribean,12/22/2024 12:00:00 AM,Preliminar,52,0,0,0,,,12,2024,0,0.00,0.00,,0,0.000,0,0,84,0,1,0
+2,México,2024-12-28,2024-10-12,Out,Mexico,53,2024,1-4,12/28/2024,484,10/12/2024,12/28/2024,,,Central America Ithsmus and Mexico,12/22/2024 12:00:00 AM,Preliminar,52,0,30,30,,,12,2024,,0.02,0.02,41,1 - 99,0.000,30,0,130861,30,1,30
+2,Nicaragua,2024-12-28,2024-12-14,Out,Nicaragua,53,2024,1-4,12/28/2024,558,12/14/2024,12/28/2024,,,Central America Ithsmus and Mexico,12/22/2024 12:00:00 AM,Preliminar,52,0,1,0,,,12,2024,,0.01,0.00,50,1 - 99,0.000,1,0,6916,1,1,1
+2,Panamá,2024-12-28,2025-03-08,Out,Panama,53,2024,0,12/28/2024,591,3/8/2025,12/28/2024,,,Central America Ithsmus and Mexico,12/22/2024 12:00:00 AM,Preliminar,52,0,0,0,,,12,2024,,0.00,0.00,,0,,0,,4515,0,1,0
+3,Perú,2024-12-28,2024-12-28,Out,Peru,53,2024,1-4,12/28/2024,604,12/28/2024,12/28/2024,,,Andean,12/22/2024 12:00:00 AM,Preliminar,52,0,7,0,,,12,2024,,0.02,0.00,40,1 - 99,0.000,7,0,34217,7,1,7
+5,Puerto Rico,2024-12-28,2024-12-28,Out,Puerto Rico,53,2024,1-4,12/28/2024,630,12/28/2024,12/28/2024,,,Latin Caribbean,12/22/2024 12:00:00 AM,Preliminar,52,0,17,0,,,12,2024,,0.52,0.00,52,1 - 99,0.000,17,0,3242,17,1,17
