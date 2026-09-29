@@ -18,3 +18,7 @@ local
 5_manuscript/
 rjavaenv/
 2_scripts/rjavaenv
+
+# Specific files (anywhere in the repo)
+orov_out_clean_final_2026-09-29.csv
+orov_out_clean_final_2026-09-29.RData
