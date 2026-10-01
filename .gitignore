@@ -12,6 +12,7 @@ local
 *.html
 1_data/00_sites_data/
 1_data/01_dict/
+1_data/05_clean_data
 2_scripts/
 3_intermediate/
 4_outputs/
