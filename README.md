@@ -21,4 +21,4 @@ It contains:
 ## Posted on repository:
 public data (laboratory ranges, PAHO and shapefiles)
 
-The script were run from 1 to 5 to generate the results from teh manuscript
+The script were run from 1 to 5 to generate the results from the manuscript
