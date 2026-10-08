@@ -18,7 +18,4 @@ It contains:
 5) Manuscript: Tables and figures for manuscript and associated files for formatting
 
 
-## Posted on repository:
-public data (laboratory ranges, PAHO and shapefiles)
-
-The script were run from 1 to 5 to generate the results from the manuscript
+The script were run from 1 to 5 to generate the results from the manuscript. Contact the corresponding author to request data
