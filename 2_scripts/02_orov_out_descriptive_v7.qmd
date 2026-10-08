@@ -1,0 +1,632 @@
+---
+title: "oropouche case series descriptive analysis"
+author: "Fio Vialard"
+format: 
+  html:
+    toc: true
+    toc-expand: 2
+    embed-resources: true
+    self-contained: true
+resources:
+  - tmp/**
+  - orov_summary.html
+warning: false
+editor: visual
+---
+
+## Set up
+
+```{r}
+knitr::opts_knit$set(root.dir = "~/orov_out") 
+knitr::opts_chunk$set(echo = TRUE, warning = F, fig.width=10, fig.height=10, message = F)
+require(tidyverse) # tidy format
+require(readxl) # read excel files 
+require(knitr) # rendering 
+#install.packages("flextable")
+require(flextable) # make tables
+#install.packages("visdat")
+require(naniar) # for missing data analysis
+require(visdat) #quick viz of the data
+#install.packages("gt")
+require(gt) #cool tables 
+require(summarytools) #summarize the data 
+require(skimr) # summarize the data
+# install.packages("gtsummary")
+require(gtsummary) # make clean summary table
+require(rvest)
+#install.packages("pdftools")
+require(pdftools) # for extracting info from PDfs
+require(tidytext) # to find words easily
+require(rlang) # for enquo
+#theme_set(theme_minimal()) # all graphs will be in the same style 
+source(here::here("2_scripts", "00_functions.R")) # source the functions from their specific location 
+```
+
+## Load data
+
+```{r}
+# attributes 
+l_orov <- readRDS(here::here("1_data", "05_clean_data" ,"orov_out_attributes.RData")) 
+list2env(l_orov, envir = .GlobalEnv)
+
+# dataset 
+orov_all <- readRDS(here::here("1_data", "05_clean_data","orov_out_clean_final_2026-10-01.RData")) 
+```
+
+## Overview
+
+```{r}
+## all 
+orov_all |>
+  mutate(
+    across(where(~ inherits(.x, "difftime")), as.numeric)
+  ) |>
+select(where(is.numeric)) |>
+  skim()
+
+# by site
+orov_all |>
+  mutate(
+    across(where(~ inherits(.x, "difftime")), as.numeric)
+  ) |>
+select(site, age, n_sx, platelets_lab) |>
+  group_by(site) |>
+  skim()
+```
+
+Age, platelet_lab and n_sx are normally distributed overall but not across site. Keep as median + IQR
+
+## Missing data analysis
+
+```{r}
+vis_miss(orov_all)
+
+n_total_na <- sum(is.na(orov_all))
+
+n_complete_case <- sum(!complete.cases(orov_all))
+
+l_orov[["n_total_na"]] <- n_total_na
+l_orov[["n_complete_case"]] <- n_complete_case
+```
+
+There are `r n_total_na` missing values in the dataset. The number of individuals with at least one missing value is `r n_complete_case`.
+
+## Values reported in manuscript
+
+```{r}
+
+tab_dates <- orov_all |>
+  filter(!is.na(sx_length)) |>
+  select(sx_date,sx_end, sx_length, time_sx_to_pcr_urine, time_sx_to_pcr_urine_fu) |>
+  mutate(time_sx_to_pcr_urine_combined = pmax(time_sx_to_pcr_urine, time_sx_to_pcr_urine_fu, na.rm = T)) |>
+  tbl_summary(
+    type = list(c(sx_date, sx_end, time_sx_to_pcr_urine, time_sx_to_pcr_urine_fu, time_sx_to_pcr_urine_combined) ~ "continuous2"),
+    statistic = list(
+      c(sx_date, sx_end, time_sx_to_pcr_urine, time_sx_to_pcr_urine_fu, time_sx_to_pcr_urine_combined) ~ c("{median} ({p25}-{p75})", "{min}-{max}")
+    )
+  )
+
+tab_dates
+
+l_orov[["tab_dates"]] <- tab_dates
+
+range_dx_date <- orov_all |>
+  select(contains("date"), -c(travel_date, hospitalization_date, sx_date, consult_date, compl_date, icu_date, death_date)) |>
+  pivot_longer(everything()) |>
+  summarise(
+    min = min(value, na.rm = TRUE),
+    max  = max(value, na.rm = TRUE)
+  )
+
+l_orov[["range_dx_date"]] <- range_dx_date
+
+# Create a paragraph with number and name of each sx
+word_counts <- orov_all %>%
+  select(other_sx) %>%
+  separate_rows(other_sx, sep = ",") %>%             # split by commas
+  mutate(other_sx = str_to_sentence(str_trim(other_sx)), # remove spaces around items
+         other_sx = str_replace(other_sx, "edema", "oedema"),
+         other_sx = str_replace(other_sx, "Edema", "Oedema"),
+         other_sx = str_replace(other_sx, "fetal", "foetal"),
+         other_sx = str_replace(other_sx, "Dyspnea", "Dyspnoea"),
+         other_sx = str_replace(other_sx, "Conjuctivite", "Conjunctivitis"),
+         other_sx = str_replace(other_sx, "Enantema", "Enanthema")
+  ) %>%          
+  count(other_sx, sort = TRUE) |>
+  filter(other_sx!="None" &!is.na(other_sx))
+
+paragraph_other_sx <- word_counts %>%
+  mutate(text = paste0(n, " ", other_sx)) %>%
+  summarise(paragraph = str_c(text, collapse = ", ")) %>%
+  pull(paragraph)
+
+paragraph_other_sx
+
+l_orov[["paragraph_other_sx"]] <- paragraph_other_sx
+
+l_ethnicity_disagg<- as.list(table(orov_all$ethnicity2)[c(1,3,4,8)])
+
+l_orov[["l_ethnicity_disagg"]] <- l_ethnicity_disagg
+
+# available ct data per severity
+orov_all$ct_available <-  ifelse(!is.na(orov_all$orov_serum_ct),"Yes", "No")
+ct_tab <- table(orov_all$complication2, orov_all$ct_available, useNA = "ifany")
+ct_tab
+round(prop.table(ct_tab, margin =2)*100,2) # column
+round(prop.table(ct_tab, margin =1)*100,2) # row, default
+
+sum(is.na(orov_all$orov_serum_ct)) == sum(orov_all$ct_available=="No")
+
+
+# hospitalization median by severity 
+hospitalization_tab <- df_hospitalization_times  |>
+  mutate(cases_considered_severe = relevel(
+    factor(cases_considered_severe),
+    ref = "Yes"
+  )) |>
+  tbl_summary(
+    by = cases_considered_severe,
+    include = days_admission,
+    type = list(c(days_admission) ~ "continuous2"),
+    statistic = list(c(days_admission)~c("{median} ({p25}-{p75})", "{min}-{max}")),
+    missing_text = "Missing"
+  )|>
+  add_overall()
+
+
+l_orov[["hospitalization_tab"]] <- hospitalization_tab
+```
+
+## Clean dataset strings for manuscript tables and figures
+
+```{r}
+
+skip_words <- c("de", "do")
+orov_clean <- orov_all |> 
+   mutate(sex =str_replace_all(sex,"M","Male"),
+         sex =str_replace_all(sex,"F","Female"),
+         sex = ifelse(is.na(sex), "Not declared", sex),
+         across(c(sex, ethnicity3, final_outcome), ~ fct_infreq(.)),
+         site2 = factor(
+           case_when(
+             site == "bananeiras" ~ "Paraíba",
+             site == "ceara" ~ "Ceará",
+             site == "darien" ~ "Darién",
+             site == "rio" ~ "Rio de Janeiro",
+             site == "manaus" ~ "Amazonas",
+             site == "yurimaguas" ~ "Loreto",
+             T ~ str_to_title(site)
+               ), levels = c("Ceará", "Darién", "Espirito Santo", "Paraíba", "Pernambuco", "Rio de Janeiro", "Amazonas", "Loreto")
+           
+         ),
+          across(c(site,adult_vs_ped, city_residence), ~ Reduce( # capitalize names except de 
+          function(txt, w)
+            str_replace_all(txt,
+              regex(paste0("\\b", str_to_title(w), "\\b")),
+              w
+            ),
+          skip_words,
+          init = str_to_title(.x)
+        )
+         ),
+         site = factor(site, 
+                       levels = str_to_title(c("bananeiras", "ceara", "darien", "espirito santo", "pernambuco", "rio","manaus", "yurimaguas"))),
+        compl_others = case_when(
+          cns_involvment == "severe headache" ~ "severe headache",
+          T ~compl_others),
+          compl_others= str_to_sentence(str_extract(compl_others,regex("Arthritis|Shock|severe headache", ignore_case = T))),
+        cns_involvment = str_to_sentence(str_extract(cns_involvment, "limb weakness|Agitation")),
+        across(c(iotropic,iv, respiratory, renal_compl,hepatic, cardiac), ~ifelse(!is.na(.)&.!= "No", "Yes", as.character(.))),
+        no_organ_support = if_else(
+          if_all(c(iotropic, iv, dialysis, ventilated), ~ .x != "Yes" | is.na(.x)),
+          "Yes",
+          "No"
+        ),
+        pregnancy_outcomes = 
+          case_when(
+            str_detect(pregnancy_outcomes, "TPL|Down|defect") ~ "Other",
+            str_detect(pregnancy_outcomes, "fever") ~ "Symptomatic newborn",
+            is.na(pregnancy_outcomes) ~ NA,
+            T ~ pregnancy_outcomes),
+        pregnancy_outcomes = case_when(
+          str_detect(pregnancy_outcomes, regex("Abortion", ignore_case = TRUE)) ~ "Abortion",
+          str_detect(pregnancy_outcomes, regex("Stillbirth", ignore_case = TRUE)) ~ "Stillbirth",
+          str_detect(pregnancy_outcomes, regex("Preterm", ignore_case = TRUE)) ~ "Preterm",
+          str_detect(pregnancy_outcomes, regex("Symptomatic newborn", ignore_case = TRUE)) ~ "Symptomatic newborn",
+          str_detect(pregnancy_outcomes, regex("microcephaly", ignore_case = TRUE)) ~ "Newborn with microcephaly",
+          str_detect(pregnancy_outcomes, regex("reported|no complication", ignore_case = TRUE)) ~ "Completed pregnancies with no complications",
+          !is.na(pregnancy_outcomes) ~ "Other",
+          TRUE ~ NA_character_
+        ),
+        # Convert to factor with defined level ordering
+    pregnancy_outcomes = factor(
+      pregnancy_outcomes,
+      levels = c(
+        "Abortion",
+        "Stillbirth",
+        "Preterm",
+        "Symptomatic newborn",
+        "Newborn with microcephaly",
+        "Completed pregnancies with no complications",
+        "Other"
+      )
+    ),
+    # Put "Other" at the end while sorting the rest by frequency if desired
+    pregnancy_outcomes = fct_relevel(pregnancy_outcomes, "Completed pregnancies with no complications", after = Inf),
+      final_outcome = fct_infreq(
+        case_when(
+          final_outcome == "Inpatient"  ~ "Hospitalisation in general ward",
+          final_outcome == "ICU-level care" ~"Intensive unit",
+          T ~ final_outcome
+        )
+      )
+  )
+
+
+
+
+l_orov[["orov_clean"]] <- orov_clean
+```
+
+## Tables
+
+### Table 1 Demographic & Epidemiological data
+
+**Revision changes: added back missing values to the tables**
+
+**Table 1**
+
+```{r}
+#| tbl-cap: demographic & epidemiological data by site
+
+demo <- orov_clean |> 
+  select(age, age_cat,sex, ethnicity3, year, case_type, education, pregnancy,
+         n_comorb, hypertension, diabetes, immuno, 
+         n_co_inf, dengue:co_inf_other, site2, adult_vs_ped, endemic_area)|>
+  mutate(year = as.factor(year))
+
+v_var_strat <- c("site2","adult_vs_ped", "endemic_area" )
+
+v_yes <- c("pregnancy", "diabetes", "hypertension", "immuno"
+           )
+
+
+demo_site_tab <- create_summary_table_miss(
+  data = demo,
+  by_var = "site2",
+  v_strat = v_var_strat,
+  var_yes = v_yes,
+  type_list = list(
+    age ~ "continuous2"
+  ),
+  stat_list = list(
+    age ~ c("{median} ({p25}-{p75})", "{min}-{max}")
+  ),
+  set_na_option = "no" # this will remove the missing rows for continuous data because categorical data already has unknown added as a level 
+) |>
+  remove_row_type(variables = c("diabetes", "hypertension"), 
+                  type = "level", level_value = "Unknown") # remove the missing row of some of the comorbidity data 
+
+demo_site_tab
+
+
+l_orov[["demo_site_tab"]] <- demo_site_tab
+```
+
+Separate table for pregnancy and merge later
+
+```{r}
+
+preg <- orov_clean |>
+  filter(pregnancy=="Yes") |>
+  select(pregnancy_weeks, pregnancy_trimester, pregnancy_outcomes,site2, adult_vs_ped, endemic_area)
+
+v_var_strat <- c("site2","adult_vs_ped", "endemic_area" )
+
+# transform to factor
+preg$pregnancy_trimester <- as.factor(preg$pregnancy_trimester)
+
+
+
+demo_site_preg_tab <- create_summary_table_miss(
+  data = preg,
+  by_var = "site2",
+  v_strat = v_var_strat,
+  set_na_option = "no",
+  stat_list = list(
+      ends_with("_outcomes") ~ "{n}/{N} ({p}%)"
+  )
+)
+
+demo_site_preg_tab
+
+
+
+l_orov[["preg_site_tab"]] <- demo_site_preg_tab
+```
+
+### **Table 2. Clinical & laboratory**
+
+```{r}
+#| tbl-cap: clinical and laboratory by site
+clin <- orov_clean %>% 
+  select(c(site, site2,sex, endemic_area, adult_vs_ped, age_cat, housing_location, pregnancy, risk_factors,# stratif var
+           sx_date:dizziness,n_sx, other_sx_bin, sx_recurrent, sequelae,temperature_celsius, tourniquete, # clinical presentation 
+           complication, complication2,  compl_date:cns_involvment, n_haemorrhagic ,haemorrhagic, respiratory, renal_compl, hepatic, cardiac, compl_others, compl_bin,# complications
+           final_outcome, dialysis:platelet_transfusion, no_organ_support,# final outcome
+           orov_confirmation,
+           orov_dx:nab_date_fu, orov_dx_nab, orov_dx_elisa, ,orov_dx_pcr, sx_date, sx_end,orov_urine_date, time_sx_to_dx, time_sx_to_pcr, time_sx_to_nab, time_sx_to_elisa, time_sx_to_igm, sx_length  # diagnosis
+           )) 
+
+l_orov[["clin"]] <- clin
+
+# order the columns by how descending frequency
+v_sx_names <- orov_clean |>
+  select(fever:dizziness) |>
+  colnames()
+
+v_sx_names <- v_sx_names[
+  order(colSums(clin[v_sx_names] == "Yes", na.rm = TRUE), decreasing = T) 
+]
+
+v_sx_names<- setdiff(v_sx_names, c("fatigue","chills", "photophobia","odynophagia","conjunct_injection", "malaise", "chest_pain", "limb_weakness")) 
+
+clin_for_tab <- clin |>
+  select(site2, endemic_area, adult_vs_ped, v_sx_names, 
+         n_sx, 
+         sx_length, 
+         n_haemorrhagic,haemorrhagic, cns_involvment, respiratory, renal_compl, hepatic, cardiac,  compl_others, compl_bin, final_outcome:ventilated, iotropic:iv, no_organ_support,orov_confirmation, orov_dx_pcr,
+         sero_igg, sero_igm, nab, time_sx_to_pcr, 
+         ) |>
+  select(-c(stiff_neck, mental, seizures))|>
+  mutate(across(c(sx_length, time_sx_to_pcr, 
+                  ),~as.integer(.)))
+  
+v_other_sx <- paste(
+  na.omit(unique(orov_clean$other_sx)),
+  collapse = ", "
+)
+
+l_orov[["v_other_sx"]] <- v_other_sx
+
+mean_sx_length<- mean(clin$sx_length, na.rm = T) %>%
+  round(digits = 0)
+
+l_orov[["mean_sx_length"]] <- mean_sx_length
+
+v_yes <- clin_for_tab |>
+  select(fever:dizziness, n_haemorrhagic:cardiac, orov_dx_pcr, sero_igg, sero_igm, dialysis:iv) |>
+  colnames()
+
+
+
+
+compl_cols <- setdiff(compl_cols, c("chest_pain","stiff_neck", "seizures",      "limb_weakness", "compl_life_threat"))
+
+remove_na_var <- c(compl_cols, "iotropic", "iv", "dialysis", "ventilated", "sero_igg", "sero_igm")
+
+clin_site_tab <- create_summary_table_miss(
+  data = clin_for_tab,
+  v_strat = v_var_strat,
+  var_yes = v_yes,
+  by= "site2",
+  type_list = list(
+    c(sx_length, time_sx_to_pcr) ~ "continuous2"
+  ),
+  stat_list = list(
+    starts_with("sero_") ~ "{n}/{N} ({p}%)",
+    c(sx_length, time_sx_to_pcr) ~ c("{median} ({p25}, {p75})", "{min}, {max}")
+  )
+)|>
+  remove_row_type(variable=remove_na_var, type = "level", level_value = "Unknown")
+
+
+
+clin_site_tab
+
+
+l_orov[["clin_site_tab"]] <- clin_site_tab
+```
+
+## Supplemental tables
+
+### S2. Municipalities
+
+```{r}
+df_municipilaties <- orov_clean |>
+  select(site2, province_residence, city_residence, housing_location) |>
+  arrange(site2, province_residence, city_residence) |> # order by site first, then province, then city
+  mutate(province_residence=fct_inorder(province_residence), # set factors as arranged
+         city_residence =fct_inorder(city_residence))
+
+
+municipalities_tab <- create_summary_table_miss(
+  data = df_municipilaties,
+  by_var = "site2",
+  v_strat = v_var_strat,
+)
+
+municipalities_tab
+
+
+
+l_orov[["municipalities_tab"]] <- municipalities_tab
+```
+
+### S7. Lab values
+
+```{r}
+
+
+# extract p_id of ES except wbc results
+
+ v_p_id_no_lab_es <- orov_clean |>
+  filter(
+    if_all(-all_of("wbc_lab") & all_of(lab_values), is.na) &
+    site == "Espirito Santo" #select all that do not have a lab result except wbc_lab
+  ) |>
+   pull(p_id)
+
+
+# select the variables of interest 
+ lab <- orov_clean |>
+   select(p_id, haemoglobin_lab:lymphocytes_lab_low, site2, complication2)|>
+  filter(!p_id %in% v_p_id_no_lab_es)|>
+     filter(if_any(all_of(category_names), ~ !is.na(.))) |>
+   mutate(across(category_names, ~str_to_sentence(.)),
+         across(category_names, ~ factor(.,levels = stringr::str_to_sentence(c("above", "within", "below")))))
+ 
+  
+
+lab_tab <- create_summary_table_lab(
+  lab|>
+    select(-c(p_id,normal_lab_values, complication2)),
+  v_strat = v_var_strat,
+  var_yes = c("haematocrit_lab_elevated", "platelets_lab_low", "lymphocytes_lab_low", "creatinine_lab_elevated", "alt_lab_elevated"),
+  by= "site2",
+  stat_list =  list(
+    all_categorical() ~ "{n}/{N} ({p}%)",
+    all_dichotomous() ~ "{n}/{N} ({p}%)"
+  )
+)|>
+  modify_column_hide(columns = c(stat_1, stat_2, stat_4, stat_5))
+
+lab_tab
+
+l_orov[["df_lab"]] <- lab # those with lab test available
+
+l_orov[["lab_tab"]] <- lab_tab
+```
+
+### S8. Complication stratified tables
+
+```{r}
+v_strat <- c("complication2", "site")
+v_yes <- c( "diabetes", "hypertension", "renal", "immuno", "obesity", "cvd")
+
+orov_compl <- orov_clean|>
+  select(c(age, age_cat, n_ws,warning_signs, two_ws, n_sx,sx_length,n_comorb, hypertension:immuno,ct_available,time_sx_to_pcr, complication2))|>
+  mutate(across(c(sx_length, time_sx_to_pcr),~as.integer(.)))
+
+
+
+
+compl_tab <- create_summary_table_miss(
+  data = orov_compl,
+  by_var = "complication2",
+  v_strat = v_var_strat,
+  var_yes = v_yes,
+  type_list = list(
+    c(sx_length, time_sx_to_pcr, n_ws) ~ "continuous2"
+  ),
+  stat_list = list(
+    c(sx_length, time_sx_to_pcr, n_ws) ~ c("{median} ({p25}, {p75})", "{min}, {max}")
+  )
+)
+
+compl_tab
+
+
+s8_lab_tab <- orov_clean|>
+  select(alt_lab_elevated:lymphocytes_lab_low, complication2) |>
+  create_summary_table_lab(by_var = "complication2",
+                           v_strat = v_var_strat,
+                           stat_list =  list(
+                             all_categorical() ~ "{n}/{N} ({p}%)",
+                             all_dichotomous() ~ "{n}/{N} ({p}%)"))
+
+s8_lab_tab
+
+
+l_orov[["compl_tab"]] <- compl_tab
+l_orov[["s8_lab_tab"]] <- s8_lab_tab
+```
+
+### extra table - variables removed by site
+
+```{r}
+
+
+
+extra_tab_var <- orov_clean |> 
+  select(obesity:renal, site2, fatigue,chills, photophobia,odynophagia,conjunct_injection, malaise, chest_pain, limb_weakness, other_sx_bin,
+         tourniquete, sx_recurrent, sequelae)
+
+v_var_strat <- c("site2","adult_vs_ped", "endemic_area" )
+
+v_yes <- setdiff(colnames(extra_tab_var), "site2")
+
+extra_tab<- create_summary_table_miss(
+  data = extra_tab_var,
+  by_var = "site2",
+  v_strat = v_var_strat,
+  var_yes = v_yes,
+  set_na_option = "no" # this will remove the missing rows for continuous data because categorical data already has unknown added as a level 
+)
+
+extra_tab
+
+ l_orov[["extra_tab"]] <-  extra_tab
+```
+
+## Important variables
+
+### Patients with length of sx data
+
+```{r}
+# how many patients in graph and with long symptoms
+n_sx_length <- sum(!is.na(orov_all$sx_length))
+
+n_sx_length_over_5_days <- sum(orov_all$sx_length>5, na.rm = T)
+
+n_sx_length_over_7_days <- sum(orov_all$sx_length>7, na.rm = T)
+
+n_sx_length_over_10_days <- sum(orov_all$sx_length>10, na.rm = T)
+
+l_orov[["n_sx_length"]] <- n_sx_length
+l_orov[["n_sx_length_over_5_days"]] <- n_sx_length_over_5_days
+l_orov[["n_sx_length_over_7_days"]] <- n_sx_length_over_7_days
+l_orov[["n_sx_length_over_10_days"]] <- n_sx_length_over_10_days
+```
+
+### Pediatric cases
+
+```{r}
+ped_cases <- orov_all |>
+  filter(age <18)
+
+
+n_ped <- nrow(ped_cases)
+```
+
+there are `r n_ped` children in the dataset
+
+### Complications
+
+```{r}
+complications <- orov_clean |>
+  filter(complication %in% c("Complication", "Pregnancy complication"))
+
+complications |>
+  select(age, pregnancy) |>
+  summary()
+
+complications |>
+  filter(age<18) |>
+  nrow()
+  
+  
+n_compl <-  nrow(complications)
+```
+
+There are `r n_compl` cases with complications in the dataset
+
+## Save
+
+```{r}
+
+save.image(here::here("1_data","05_clean_data" ,"orov_out_descriptive_analysis.RData"))
+
+saveRDS(l_orov, file = here::here("1_data", "05_clean_data" ,"orov_out_descriptive_analysis_objects.RData"))
+
+```

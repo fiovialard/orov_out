@@ -5,24 +5,28 @@
 .DS_Store
 .quarto
 local
-*.qmd
 *.rds
-*.R
 *.RData
 
 # ...except this one
 !l_ct_data.RData
 
 1_data/00_sites_data/
-2_scripts/
-3_intermediate/
-4_outputs/
-5_manuscript/
 rjavaenv/
 2_scripts/rjavaenv
+
+# 3_intermediate: ignore contents, then re-include what you need
+3_intermediate/*
+!3_intermediate/presentations/
+!3_intermediate/presentations/**
+!3_intermediate/orov_out_case_reported_paho.RData
 
 # Specific files (anywhere in the repo)
 orov_out_clean_final_2026-09-29.csv
 orov_out_clean_final_2026-09-29.RData
 orov_out_clean_final_2026-10-01.csv
 orov_out_clean_final_2026-10-01.RData
+99_site_wrangling.html
+99_site_wrangling.qmd
+999_combined_wrangling.html
+999_combined_wrangling.qmd
