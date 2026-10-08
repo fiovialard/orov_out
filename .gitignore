@@ -7,12 +7,13 @@
 local
 *.qmd
 *.rds
-*.RData
 *.R
-*.html
+*.RData
+
+# ...except this one
+!l_ct_data.RData
+
 1_data/00_sites_data/
-1_data/01_dict/
-1_data/05_clean_data
 2_scripts/
 3_intermediate/
 4_outputs/
@@ -23,3 +24,5 @@ rjavaenv/
 # Specific files (anywhere in the repo)
 orov_out_clean_final_2026-09-29.csv
 orov_out_clean_final_2026-09-29.RData
+orov_out_clean_final_2026-10-01.csv
+orov_out_clean_final_2026-10-01.RData
