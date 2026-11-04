@@ -749,3 +749,102 @@ ggsave(filename = here::here("3_intermediate", "presentations","map_compl.pdf"),
        units = c("mm"),
        dpi = 300
 )
+
+
+
+# EXTRA - outputs for Linkedin post --------------------------------------
+
+# start with empty map + amazon limits 
+
+map_li <- map_continent(data = df_map , fill_var = "n_total_cat",
+                     fill_scale = scale_fill_brewer(palette = "Blues", na.value = "lightgrey", 
+                                                    breaks = c("<100", "100-500", "501-1000", "1001-5000", ">5000"),
+                                                    guide = guide_legend(order = 1)),
+                     legend = "PAHO-reported cases from 2024-2025"
+)+
+  geom_sf(data = amazon_outline, color = "darkgreen", linewidth = 0.8)+
+  annotate("text", x = -45, y = 7, label = "Endemic area", size = 5, color = "darkgreen")+
+  theme(legend.position = "left")
+
+map_li
+
+# extract legend 
+# get legends of plots 
+legend_paho <- get_legend(map_li)
+
+
+
+
+# add bubbles
+map_li_annotated <- apply_theme(map_li, offset_tab = df_bubble_offsets,
+                       label_data = df_map |> filter(!is.na(n_cases) & n_cases > 0),
+                       set_size_lab = 5) +
+  geom_point(data = df_map |>
+               filter(!is.na(n_cases) & n_cases > 0) |>
+               left_join(df_bubble_offsets, by = "shapeName") |>
+               mutate(x = x_pos,
+                      y = st_centroid(geometry) %>% st_coordinates(.) %>% .[,2] + y_offset),
+             aes(x=x, y = y, size = n_cases),
+             shape = 21, stroke =1, fill = "white") + # shape and thickness of the bubble
+  guides(size = guide_legend(order = 2)) +
+  scale_size_continuous(name = "Number of included cases",
+                        range = c(2,14), breaks = c(1,5,25,50,100,250,500,1250), # create scale for included cases
+                        limits = c(1, 1300),  
+                        guide = guide_legend(ncol = 1))+
+  coord_sf(xlim = c(-120, -10), expand = TRUE)
+
+map_li_annotated
+
+#get legend 
+# get legends of plots 
+legend_bubbles <- get_legend(map_li_annotated)
+
+# add adverse cases and remove legends
+map_li_final <- map_li_annotated+
+  geom_point(data = df_map |>
+               filter(!is.na(n_cases_severe) & n_cases_severe > 0) |> # add severe cases
+               left_join(df_bubble_offsets, by = "shapeName") |>
+               mutate(x = x_pos + x_offset,
+                      y = st_centroid(geometry) %>% st_coordinates(.) %>% .[,2] + y_offset),
+             aes(x=x, y = y, size = n_cases_severe),
+             color = "#801515")+
+  geom_point(data = df_map |>
+               filter(!is.na(n_cases_preg) & n_cases_preg > 0) |> # add pregnacy cases
+               left_join(df_bubble_offsets, by = "shapeName") |>
+               mutate(x = x_pos + x_offset + 2 * sign(x_offset), #add more space in the direction of the offset
+                      y = st_centroid(geometry) %>% st_coordinates(.) %>% .[,2] + y_offset),
+             aes(x=x, y = y, size = n_cases_preg),
+             color = "#D46A6A")+
+  theme(legend.position = "none")
+
+map_li_final  
+
+
+ggsave(filename = here::here("3_intermediate", "presentations","legend_linked_in1.pdf"),
+       plot = legend_paho,
+       device = "pdf",
+       width = 400,
+       height = 300,
+       units = c("mm"),
+       dpi = 300
+)
+
+ggsave(filename = here::here("3_intermediate", "presentations","legend_linked_in2.pdf"),
+       plot = legend_bubbles,
+       device = "pdf",
+       width = 400,
+       height = 300,
+       units = c("mm"),
+       dpi = 300
+)
+
+ggsave(filename = here::here("3_intermediate", "presentations","map_linked_in.pdf"),
+       plot = map_li_final,
+       device = "pdf",
+       width = 400,
+       height = 300,
+       units = c("mm"),
+       dpi = 300
+)
+
+
