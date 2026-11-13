@@ -9,6 +9,7 @@
 ## Date: 8/10/2026
 
 The orov-out project houses the files related to the publication: "Oropouche virus disease across Latin America during the 2023-2025 epidemic: a multi-country case series". 
+The publication can be accessed at: https://doi.org/10.1016/j.lana.2026.101678
 
 It contains:
 1) Data and data dictionaries (.rds/.csv), pediatric lab references.pdf, .geojson administrative border files, .csv files with 2024-2025 reported arboviruses from PAHO and the extracted data (.rds). Clean data after descriptive analysis .RData, codebook 
